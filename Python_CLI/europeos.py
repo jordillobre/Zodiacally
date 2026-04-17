@@ -28,6 +28,22 @@ SIGNOS_SIDERAL = [
     ("Piscis",     (3, 15), (4, 13)),
 ]
 
+SIGNOS_DRUIDICOS = [
+    ("Ciervo",              (12, 24), (1, 20)),
+    ("Gato",                (1, 21), (2, 17)),
+    ("Vibora",              (2, 18), (3, 17)),
+    ("Zorro",               (3, 18), (4, 14)),
+    ("Toro",                (4, 15), (5, 12)),
+    ("Caballito de mar",    (5, 13), (6, 9)),
+    ("Reyezuelo",           (6, 10), (7, 7)),
+    ("Caballo",             (7, 8), (8, 4)),
+    ("Salmón",              (8, 5), (9, 1)),
+    ("Cisne",               (9, 2), (9, 29)),
+    ("Mariposa",            (9, 30), (10, 27)),
+    ("Lobo",                (10, 28), (11, 24)),
+    ("Halcón",              (11, 25), (12, 23)),
+]
+
 def _fecha_en_rango(dia, mes, inicio, fin):
     mes_ini, dia_ini = inicio
     mes_fin, dia_fin = fin
@@ -52,3 +68,6 @@ def comprobar_signo_tropical(dia, mes):
 
 def comprobar_signo_sideral(dia, mes):
     return comprobar_signo(dia, mes, SIGNOS_SIDERAL)
+
+def comprobar_signo_druidico(dia, mes):
+    return comprobar_signo(dia, mes, SIGNOS_DRUIDICOS)
