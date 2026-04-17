@@ -1,6 +1,6 @@
 import datetime
 import calendar
-from  occidental import *
+from  occidental import comprobar_signo_tropical, comprobar_signo_sideral
 
 def pedir_entero(mensaje, min, max):
     while True:

@@ -1,64 +1,54 @@
+SIGNOS_TROPICAL = [
+    ("Aries",      (3, 21), (4, 19)),
+    ("Tauro",      (4, 20), (5, 20)),
+    ("Géminis",    (5, 21), (6, 20)),
+    ("Cáncer",     (6, 21), (7, 22)),
+    ("Leo",        (7, 23), (8, 22)),
+    ("Virgo",      (8, 23), (9, 22)),
+    ("Libra",      (9, 23), (10, 22)),
+    ("Escorpio",   (10, 23), (11, 21)),
+    ("Sagitario",  (11, 22), (12, 21)),
+    ("Capricornio",(12, 22), (1, 19)),
+    ("Acuario",    (1, 20), (2, 18)),
+    ("Piscis",     (2, 19), (3, 20)),
+]
+
+SIGNOS_SIDERAL = [
+    ("Aries",      (4, 14), (5, 14)),
+    ("Tauro",      (5, 15), (6, 14)),
+    ("Géminis",    (6, 15), (7, 15)),
+    ("Cáncer",     (7, 16), (8, 15)),
+    ("Leo",        (8, 16), (9, 15)),
+    ("Virgo",      (9, 16), (10, 15)),
+    ("Libra",      (10, 16), (11, 15)),
+    ("Escorpio",   (11, 16), (12, 15)),
+    ("Sagitario",  (12, 16), (1, 14)),
+    ("Capricornio",(1, 15), (2, 14)),
+    ("Acuario",    (2, 15), (3, 14)),
+    ("Piscis",     (3, 15), (4, 13)),
+]
+
+def _fecha_en_rango(dia, mes, inicio, fin):
+    mes_ini, dia_ini = inicio
+    mes_fin, dia_fin = fin
+
+    fecha = (mes, dia)
+    return (mes_ini, dia_ini) <= fecha <= (mes_fin, dia_fin)
+
+def comprobar_signo(dia, mes, tabla):
+    """Función genérica que busca el signo en la tabla dada."""
+    for signo, inicio, fin in tabla:
+        if inicio[0] > fin[0]:
+            if _fecha_en_rango(dia, mes, inicio, (12, 31)) or \
+               _fecha_en_rango(dia, mes, (1, 1), fin):
+                return signo
+        else:
+            if _fecha_en_rango(dia, mes, inicio, fin):
+                return signo
+    return "Desconocido"
+
 def comprobar_signo_tropical(dia, mes):
-    if (mes == 3 and dia >= 21) or (mes == 4 and dia <= 19):
-        return "Aries"
-    elif (mes == 4 and dia >= 20) or (mes == 5 and dia <= 20):
-        return "Tauro"
-    elif (mes == 5 and dia >= 21) or (mes == 6 and dia <= 20):
-        return "Géminis"
-    elif (mes == 6 and dia >= 21) or (mes == 7 and dia <= 22):
-        return "Cáncer"
-    elif (mes == 7 and dia >= 23) or (mes == 8 and dia <= 22):
-        return "Leo"
-    elif (mes == 8 and dia >= 23) or (mes == 9 and dia <= 22):
-        return "Virgo"
-    elif (mes == 9 and dia >= 23) or (mes == 10 and dia <= 22):
-        return "Libra"
-    elif (mes == 10 and dia >= 23) or (mes == 11 and dia <= 21):
-        return "Escorpio"
-    elif (mes == 11 and dia >= 22) or (mes == 12 and dia <= 21):
-        return "Sagitario"
-    elif (mes == 12 and dia >= 22) or (mes == 1 and dia <= 19):
-        return "Capricornio"
-    elif (mes == 1 and dia >= 20) or (mes == 2 and dia <= 18):
-        return "Acuario"
-    elif (mes == 2 and dia >= 19) or (mes == 3 and dia <= 20):
-        return "Piscis"
+    return comprobar_signo(dia, mes, SIGNOS_TROPICAL)
 
 def comprobar_signo_sideral(dia, mes):
-    if (mes == 4 and dia >= 14) or (mes == 5 and dia <= 14):
-        return "Aries"
-    elif (mes == 5 and dia >= 15) or (mes == 6 and dia <= 14):
-        return "Tauro"
-    elif (mes == 6 and dia >= 15) or (mes == 7 and dia <= 15):
-        return "Géminis"
-    elif (mes == 7 and dia >= 16) or (mes == 8 and dia <= 15):
-        return "Cáncer"
-    elif (mes == 8 and dia >= 16) or (mes == 9 and dia <= 15):
-        return "Leo"
-    elif (mes == 9 and dia >= 16) or (mes == 10 and dia <= 15):
-        return "Virgo"
-    elif (mes == 10 and dia >= 16) or (mes == 11 and dia <= 15):
-        return "Libra"
-    elif (mes == 11 and dia >= 16) or (mes == 12 and dia <= 15):
-        return "Escorpio"
-    elif (mes == 12 and dia >= 16) or (mes == 1 and dia <= 14):
-        return "Sagitario"
-    elif (mes == 1 and dia >= 15) or (mes == 2 and dia <= 14):
-        return "Capricornio"
-    elif (mes == 2 and dia >= 15) or (mes == 3 and dia <= 14):
-        return "Acuario"
-    elif (mes == 3 and dia >= 15) or (mes == 4 and dia <=13):
-        return "Piscis"
-
-
-
-def main():
-    signo_tropical = comprobar_signo_tropical(6,4)
-    signo_sideral = comprobar_signo_sideral(6,4)
-
-    print(f"Tu signo zodiacal tropical es: {signo_tropical}")
-    print(f"Tu signo zodiacal sideral es: {signo_sideral}")
-
-if __name__ == "__main__":
-    main()
-
+    return comprobar_signo(dia, mes, SIGNOS_SIDERAL)
