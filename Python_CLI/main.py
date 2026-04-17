@@ -50,26 +50,18 @@ def main():
 
     print(f"\nHas nacido el {fecha_nacimiento.strftime('%d/%m/%Y')}.")
 
-    if tipo_zodiaco == "tropical":
-        signo = comprobar_signo_tropical(fecha_nacimiento.day, fecha_nacimiento.month)
-        print(f"Tu signo zodiacal occidental es: {signo}")
-    elif tipo_zodiaco == "sideral":
-        signo = comprobar_signo_sideral(fecha_nacimiento.day, fecha_nacimiento.month)
-        print(f"Tu signo zodiacal sideral es: {signo}")
-    elif tipo_zodiaco == "druidico":
-        signo = comprobar_signo_druidico(fecha_nacimiento.day, fecha_nacimiento.month)
-        print(f"Tu signo zodiacal druídico es: {signo}")
+    zodiacos = {
+        "tropical": ("occidental", comprobar_signo_tropical),
+        "sideral":  ("sideral",    comprobar_signo_sideral),
+        "druidico": ("druídico",   comprobar_signo_druidico),
+    }
 
-    elif tipo_zodiaco == "todos":
-        signo_tropical = comprobar_signo_tropical(fecha_nacimiento.day, fecha_nacimiento.month)
-        signo_sideral = comprobar_signo_sideral(fecha_nacimiento.day, fecha_nacimiento.month)
-        signo_druidico = comprobar_signo_druidico(fecha_nacimiento.day, fecha_nacimiento.month)
+    seleccion = zodiacos if tipo_zodiaco == "todos" else {tipo_zodiaco: zodiacos[tipo_zodiaco]}
 
-        print(f"Tu signo zodiacal occidental es: {signo_tropical}")
-        print(f"Tu signo zodiacal sideral es: {signo_sideral}")
-        print(f"Tu signo zodiacal druídico es: {signo_druidico}")
-    else:
-        print("Opción no válida. No se pudo determinar el signo zodiacal.")
+    for nombre, (etiqueta, funcion) in seleccion.items():
+        signo = funcion(fecha_nacimiento.day, fecha_nacimiento.month)
+        print(f"Tu signo zodiacal {etiqueta} es: {signo}")
+
 
 if __name__ == "__main__":
     main()
