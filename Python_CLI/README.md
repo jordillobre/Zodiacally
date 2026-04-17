@@ -1,2 +1,8 @@
-# Zodiacally
-Esta seria una aplicación en la que el usuario introducirá su fecha de nacimiento y el programa le devuelve sus valores del Zodiaco oriental y occidental
+# Modo Python CLI
+
+
+## Planteamiento
+- [x] **Europeo Tropical:** El zodiaco clásico de 12 signos.
+- [x] **Europeo Sideral:** Basado en la posición astronómica real.
+- [x] **Europeo Druídico:** Enseñanzas sagradas de los sacerdotes celtas.
+- [ ] **Oriental (Chino):** Ciclos de 12 años (Rata, Dragón, etc.). *En desarrollo*
