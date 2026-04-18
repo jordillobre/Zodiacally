@@ -1,6 +1,7 @@
 import datetime
 import calendar
 from  europeos import comprobar_signo_tropical, comprobar_signo_sideral, comprobar_signo_druidico, comprobar_signo_runico
+from asiaticos import comprobar_signo_vedas
 
 def pedir_entero(mensaje, min, max):
     while True:
@@ -43,10 +44,10 @@ def main():
     print("Bienvenido a zodiacally.")
     fecha_nacimiento = pedir_fecha()
 
-    tipo_zodiaco = input("¿Qué tipo de zodiaco quieres consultar? (tropical/sideral/druidico/runico/todos): ").strip().lower()
-    while tipo_zodiaco not in ["tropical", "sideral", "druidico", "runico", "todos"]:
-        print("Opción no válida. Por favor, elige entre 'tropical', 'sideral', 'druidico', 'runico' o 'todos'.")
-        tipo_zodiaco = input("¿Qué tipo de zodiaco quieres consultar? (tropical/sideral/druidico/runico/todos): ").strip().lower()
+    tipo_zodiaco = input("¿Qué tipo de zodiaco quieres consultar? (tropical/sideral/druidico/runico/vedas/todos): ").strip().lower()
+    while tipo_zodiaco not in ["tropical", "sideral", "druidico", "runico", "vedas", "todos"]:
+        print("Opción no válida. Por favor, elige entre 'tropical', 'sideral', 'druidico', 'runico', 'vedas' o 'todos'.")
+        tipo_zodiaco = input("¿Qué tipo de zodiaco quieres consultar? (tropical/sideral/druidico/runico/vedas/todos): ").strip().lower()
 
     print(f"\nHas nacido el {fecha_nacimiento.strftime('%d/%m/%Y')}.")
 
@@ -55,6 +56,7 @@ def main():
         "sideral":  ("sideral",    comprobar_signo_sideral),
         "druidico": ("druídico",   comprobar_signo_druidico),
         "runico":   ("rúnico",     comprobar_signo_runico),
+        "vedas":    ("veda",       comprobar_signo_vedas),
     }
 
     seleccion = zodiacos if tipo_zodiaco == "todos" else {tipo_zodiaco: zodiacos[tipo_zodiaco]}
