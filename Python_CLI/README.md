@@ -8,3 +8,5 @@ Motor de cálculo para identidades zodiacales bajo múltiples sistemas culturale
 
 ## En Desarrollo
 - [ ] **Zodiaco Oriental (Chino):** Lógica basada en ciclos de 12 años y años nuevos lunares.
+- [ ] **Calendario Celta de los Árboles:** Trece árboles sagrados, el año lunar druídico.
+- [ ] **Astrología Rúnica Nórdica:** Veinticuatro runas, antigua sabiduría vikinga.
