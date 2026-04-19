@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodiacally - JavaScript</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="script.js"></script>
+
+</head>
+<body>
+
+    <div class="datepicker-container">
+        <input type="date" class="date-input" placeholder="Selecciona tu fecha de nacimiento" />
+        <div class="datepicker" hidden>
+
+            <div class="datepicker-header">
+                <button class="ant">Ant</button>
+                
+                <div>
+                <select class="month-input">
+                    <option>Enero</option>
+                    <option>Febrero</option>
+                    <option>Marzo</option>
+                    <option>Abril</option>
+                    <option>Mayo</option>
+                    <option>Junio</option>
+                    <option>Julio</option>
+                    <option>Agosto</option>
+                    <option>Septiembre</option>
+                    <option>Octubre</option>
+                    <option>Noviembre</option>
+                    <option>Diciembre</option>
+                </select>
+                <input type="number" class="year-input">
+                </div>
+
+                <button class="sig">Sig</button>
+            </div>
+
+            <div class="dias">
+                <span>lun</span>
+                <span>mar</span>
+                <span>mie</span>
+                <span>jue</span>
+                <span>vie</span>
+                <span>sab</span>
+                <span>dom</span>
+            </div>
+            <div class="fechas">
+
+            </div>
+
+            <div class="datepicker-footer">
+                <button class="cancelar">cancelar</button>
+                <button class="aceptar">aceptar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
